@@ -1,0 +1,5 @@
+{
+  "/clientes": "/clientes",
+  "/clientes/:id": "/clientes/:id",
+  "/cidades/": "/cidades"
+}

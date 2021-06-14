@@ -1,0 +1,20 @@
+{
+  "clientes": [],
+  "cidades": [
+    {
+      "id": 1,
+      "nome": "Toledo",
+      "uf": "PR"
+    },
+    {
+      "id": 2,
+      "nome": "Marechal",
+      "uf": "PR"
+    },
+    {
+      "id": 3,
+      "nome": "Cascavel",
+      "uf": "PR"
+    }
+  ]
+}
