@@ -9,7 +9,8 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'prefix' },
       { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
-      // Demais rotas
+      { path: 'grupoProdutos', loadChildren: () => import('./grupo-produtos/grupo-produtos.module').then(m => m.GrupoProdutosModule) },
+ 
 
 
       { path: '**', redirectTo: 'home' } // Utilizado o ** para quando a rota não existir

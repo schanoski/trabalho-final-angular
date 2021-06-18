@@ -1,5 +1,16 @@
 {
-  "/clientes": "/clientes",
-  "/clientes/:id": "/clientes/:id",
-  "/cidades/": "/cidades"
+  "grupoProdutos":[
+    {
+      "id": 1,
+      "descricao": "eletrônicos"
+    },
+    {
+      "id": 2,
+      "descricao": "informática"
+    },
+    {
+      "id": 3,
+      "descricao": "alimentos"
+    }
+  ]
 }

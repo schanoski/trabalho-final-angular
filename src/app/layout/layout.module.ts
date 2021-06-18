@@ -8,7 +8,7 @@ import { HeaderComponent } from './components/header/header.component';
 @NgModule({
   declarations: [
     LayoutComponent,
-    HeaderComponent
+    HeaderComponent,
   ],
   imports: [
     CommonModule,
