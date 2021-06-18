@@ -1,4 +1,18 @@
 {
+  "grupoProdutos":[
+    {
+      "id": 1,
+      "descricao": "eletrônicos"
+    },
+    {
+      "id": 2,
+      "descricao": "informática"
+    },
+    {
+      "id": 3,
+      "descricao": "alimentos"
+    }
+  ],
   "clientes": [],
   "cidades": [
     {
