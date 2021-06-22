@@ -1,0 +1,31 @@
+<div class="modal-header">
+    <h5 class="modal-title">{{grupoProdutos?.id ? 'Editando': 'Inserindo'}} Grupo de Produtos</h5>
+  </div>
+  <div class="modal-body m-3">
+  
+    <form [formGroup]="formGroup" *ngIf="formGroup">
+  
+      <div class="row">
+        <!-- Campo de UserName -->
+        <div class=" col-md-12 mt-1 form-group">
+          <label class="form-control-label">Descrição do Produto</label>
+          <input type="text" class="form-control" formControlName="descricao"
+            [ngClass]="{'is-invalid': hasErrors(descricao!)}">
+         <!--<app-message-valid-control [control]="descricao!"> </app-message-valid-control>--> 
+        </div>
+      </div>
+  
+    </form>
+  
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-success" (click)="salvar()">
+      <i class="fa fa-save mr-2"></i>
+      Salvar
+    </button>
+
+    <button class="btn btn-danger" (click)="excluir()" *ngIf="grupoProdutos?.id">
+      <i class="fa fa-delete mr-2"></i>
+      Excluír
+    </button>
+  </div>

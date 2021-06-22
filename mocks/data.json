@@ -1,16 +1,23 @@
 {
-  "grupoProdutos":[
+  "grupoProdutos": [
     {
       "id": 1,
-      "descricao": "eletrônicos"
+      "descricao": "eletrônicos",
+      "username": "eletrônicos"
     },
     {
       "id": 2,
-      "descricao": "informática"
+      "descricao": "informática",
+      "username": "informática"
     },
     {
       "id": 3,
-      "descricao": "alimentos"
+      "descricao": "alimentos",
+      "username": "alimentos"
+    },
+    {
+      "descricao": "mytest234",
+      "id": 4
     }
   ],
   "clientes": [],
