@@ -1,3 +1,4 @@
+import { NgSelectModule } from '@ng-select/ng-select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpConfigInterceptor } from './shared/guards/http.interceptor';
@@ -23,6 +24,7 @@ registerLocaleData(localePt);
     CommonModule,
     ToastrModule.forRoot(),
     ReactiveFormsModule,
+    NgSelectModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' },
