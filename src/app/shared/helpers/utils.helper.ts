@@ -1,5 +1,7 @@
+const CEP_PATTERN = /^(\d{8}|\d{5}\-\d{3})$/;
 const CPF_PATTERN = /^(\d{11}|\d{3}\.\d{3}\.\d{3}\-\d{2})$/;
 const CNPJ_PATTERN = /^(\d{14}|\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2})$/;
+export const maskCEP = [/[0-9]/, /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/];
 export const maskCPF = [/[0-9]/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/];
 export const maskCNPJ = [/[0-9]/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/];
 
@@ -50,6 +52,10 @@ const generateCheckSums = (numbers: Array<number>, validators: Array<number>): C
 };
 
 const getRemaining = (value: number): number => (value % 11) < 2 ? 0 : 11 - (value % 11);
+
+export const formatToCEP = (value: string): string => (
+	mapToNumeric(value).replace(/(\d{5})(\d{1,3})$/, '$1-$3')
+);
 
 export const formatToCPF = (value: string): string => (
 	mapToNumeric(value)

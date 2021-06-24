@@ -1,5 +1,13 @@
+import { formatToCEP } from './../helpers/utils.helper';
 import { Pipe, PipeTransform } from "@angular/core";
 import { formatToCNPJ, formatToCPF } from "../helpers/utils.helper";
+
+@Pipe ({ name: 'cep' })
+export class CepPipe implements PipeTransform {
+    transform(value: string | null){
+        return formatToCEP(value || '');
+    }
+}
 
 @Pipe ({ name: 'cpf' })
 export class CpfPipe implements PipeTransform {

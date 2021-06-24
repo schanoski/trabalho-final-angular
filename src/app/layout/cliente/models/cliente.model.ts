@@ -10,6 +10,7 @@ export interface Cliente {
 
 export interface Endereco {
   logradouro: string;
+  cep: number;
   numero: number;
   bairro: string;
   cidade: Cidade;

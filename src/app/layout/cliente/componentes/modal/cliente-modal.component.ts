@@ -1,5 +1,5 @@
 import { GenericValidator } from './../../../../shared/helpers/validator.helper';
-import { maskCPF } from './../../../../shared/helpers/utils.helper';
+import { maskCPF, maskCEP } from './../../../../shared/helpers/utils.helper';
 import { Endereco, Cidade } from './../../models/cliente.model';
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
@@ -26,6 +26,8 @@ export class ClienteModalComponent implements OnInit {
   onDelete: EventEmitter<void> = new EventEmitter<void>();
 
   formGroup?: FormGroup;
+
+  public maskCEP = maskCEP;
 
   public maskCPF = maskCPF;
 
@@ -70,6 +72,10 @@ export class ClienteModalComponent implements OnInit {
       logradouro: [
         endereco.logradouro,
         Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(100)])
+      ],
+      cep: [
+        endereco.cep,
+        Validators.compose([Validators.required, Validators.min(0), Validators.max(999999999)])      
       ],
       numero: [
         endereco.numero,

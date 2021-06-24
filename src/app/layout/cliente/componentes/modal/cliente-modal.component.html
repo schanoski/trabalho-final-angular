@@ -37,6 +37,14 @@
         <app-message-valid-control [control]="getControl('endereco.logradouro')"> </app-message-valid-control>
       </div>
 
+      <!-- CEP -->
+      <div class="col-md-4 mt-1 form-group">
+        <label class="form-control-label">CEP</label>
+        <input type="text" class="form-control" [textMask]="{ mask: maskCEP, guide: true }"
+          formControlName="cep">
+        <app-message-valid-control [control]="getControl('endereco.cep')"> </app-message-valid-control>
+      </div>
+
       <!-- Número -->
       <div class="col-md-4 mt-1 form-group">
         <label class="form-control-label">Número</label>

@@ -79,6 +79,49 @@
       "dateInsert": "2021-06-23T02:54:04.404Z",
       "id": 3,
       "dateUpdate": "2021-06-23T02:54:13.269Z"
+    },
+    {
+      "nome": "testeteste",
+      "cpf": "350.019.730-23",
+      "dataNascimento": "2021-06-30",
+      "endereco": {
+        "logradouro": "testeteste",
+        "cep": "123444",
+        "numero": 1245.42,
+        "bairro": "teste",
+        "cidade": {
+          "id": 3,
+          "nome": "Cascavel",
+          "uf": "PR"
+        },
+        "cidadeId": [
+          3
+        ]
+      },
+      "dateInsert": "2021-06-24T15:53:56.084Z",
+      "id": 4
+    },
+    {
+      "nome": "teste",
+      "cpf": "848.006.930-98",
+      "dataNascimento": "2021-06-08",
+      "endereco": {
+        "logradouro": "testeteste",
+        "cep": "243354-354",
+        "numero": 1232.42,
+        "bairro": "wfgdsgfd",
+        "cidade": {
+          "id": 3,
+          "nome": "Cascavel",
+          "uf": "PR"
+        },
+        "cidadeId": [
+          3
+        ]
+      },
+      "dateInsert": "2021-06-24T16:26:02.027Z",
+      "id": 5,
+      "dateUpdate": "2021-06-24T16:26:35.968Z"
     }
   ],
   "cidades": [
