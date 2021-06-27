@@ -1,1 +1,71 @@
-<p>Funcionando</p>
+<div class="modal-header">
+  <h5 class="modal-title">{{produto?.id ? 'Editando': 'Inserindo'}} produto</h5>
+</div>
+
+<div class="modal-body m-3">
+
+  <form [formGroup]="formGroup" *ngIf="formGroup">
+    <!-- Campo de descricao -->
+    <div class=" col-md-12 mt-1 form-group">
+      <label class="form-control-label">Descricao</label>
+      <input type="text" class="form-control" formControlName="descricao">
+      <app-message-valid-control [control]="getControl('descricao')"> </app-message-valid-control>
+    </div>
+
+
+    <!-- check de ativo -->
+    <div class="col-md-4 mt-1 form-group">
+      <label class="form-control-label">Ativo</label>
+      <select></select>
+    </div>
+
+    <!-- Grupo Produtos -->
+    <div class="col-md-8 mt-1 form-group">
+      <label class="form-control-label">Grupo de Produtos</label>
+      <ng-select formControlName="grupoId" [items]="grupoProdutos" [multiple]="true" bindValue="id"
+        bindLabel="descricao" [searchable]="true">
+        <ng-template ng-option-tmp let-item="item">
+          {{item.descricao}}
+        </ng-template>
+      </ng-select>
+      <app-message-valid-control [control]="getControl('grupoId')"> </app-message-valid-control>
+    </div>
+
+    <div class="row" formGroupName="preco" >
+      <!-- Preço de custo currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"  -->
+      <div class="col-md-4 mt-1 form-group">
+        <label class="form-control-label">Preço de Custo</label>
+        <input type="text" class="form-control" formControlName="custo" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">
+        <app-message-valid-control [control]="getControl('preco.custo')"> </app-message-valid-control>
+      </div>
+
+      <div class="col-md-4 mt-1 form-group">
+        <label class="form-control-label">Preço de Venda</label>
+        <input type="text" class="form-control" formControlName="venda" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">
+        <app-message-valid-control [control]="getControl('preco.venda')"> </app-message-valid-control>
+      </div>
+
+    </div>
+
+    <!-- Campo de Estoque -->
+    <div class="col-md-4 mt-1 form-group">
+      <label class="form-control-label">Estoque</label>
+      <input type="number" class="form-control" formControlName="estoque">
+      <app-message-valid-control [control]="getControl('estoque')"> </app-message-valid-control>
+    </div>
+
+  </form>
+</div>
+
+<div class="modal-footer">
+  <!-- Botão para salvar o usuário -->
+  <button class="btn btn-success" (click)="salvar()">
+    <i class="fa fa-save mr-2"></i>
+    Salvar
+  </button>
+  <!-- Botão para excluír o usuário (só mostra se já tiver ID, senão não precisa excluir poir nem inseriu) -->
+  <button class="btn btn-danger" (click)="excluir()" *ngIf="produto?.id">
+    <i class="fa fa-delete mr-2"></i>
+    Excluír
+  </button>
+</div>

@@ -7,6 +7,7 @@ import { ModalProdutosComponent } from './componentes/modal/modal-produtos/modal
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ToastrModule } from 'ngx-toastr';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { CurrencyMaskModule } from 'ng2-currency-mask';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     SharedModule,
     ReactiveFormsModule,
     ToastrModule,
-    NgSelectModule
+    NgSelectModule,
+    CurrencyMaskModule
   ],
   declarations: [
     ProdutosComponent,
