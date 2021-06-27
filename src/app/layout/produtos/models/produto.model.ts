@@ -3,7 +3,7 @@ export interface Produto {
     descricao: string; //min 5 max 100
     ativo: boolean;
     grupoId: number; //associação do id do cadastro de grupo
-    preço: Preco;
+    preco: Preco;
     estoque: number; //min 0 max 999999999
 }
 

@@ -20,6 +20,30 @@
       "id": 4
     }
   ],
+  "produtos" : [
+    {
+      "id": 1,
+      "descricao": "computador",
+      "ativo": true,
+      "grupoId": 2,
+      "preco": {
+        "venda": 1.99,
+        "custo": 0.01
+      },
+      "estoque": 50
+    },
+    {
+      "id": 2,
+      "descricao": "webcam",
+      "ativo": true,
+      "grupoId": 2,
+      "preco": {
+        "venda": 1.99,
+        "custo": 0.01
+      },
+      "estoque": 50
+    }
+  ],
   "clientes": [
     {
       "nome": "William Schanoski",
