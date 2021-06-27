@@ -31,10 +31,10 @@
                 <tr *ngFor="let item of produtosSearch">
                     <td class="text-center">{{ item.id }}</td>
                     <td class="text-center">{{ item.descricao }}</td>
-                    <td class="text-center">{{ item.ativo }}</td>
+                    <td class="text-center">{{ true == item.ativo? 'Sim' : 'Não' }}</td>
                     <td class="text-center">{{ item.grupoId }}</td>
-                    <td class="text-center">{{ item.preco.custo }}</td>
-                    <td class="text-center">{{ item.preco.venda }}</td>
+                    <td class="text-center">{{ item.preco.custo | currency: 'R$' }}</td>
+                    <td class="text-center">{{ item.preco.venda | currency: 'R$' }}</td>
                     <td class="text-center">{{ item.estoque }}</td>
                     <td>
                         <button class="btn btn-outline-primary btn-circle" (click)="abrirModal(item)" >

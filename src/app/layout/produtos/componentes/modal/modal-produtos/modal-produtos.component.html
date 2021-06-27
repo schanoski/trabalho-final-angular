@@ -16,7 +16,8 @@
     <!-- check de ativo -->
     <div class="col-md-4 mt-1 form-group">
       <label class="form-control-label">Ativo</label>
-      <select></select>
+      <input type="checkbox" class="form-check-input" formControlName="ativo" ng-checked="produto.ativo = True">
+      <app-message-valid-control [control]="getControl('descricao')"> </app-message-valid-control>
     </div>
 
     <!-- Grupo Produtos -->

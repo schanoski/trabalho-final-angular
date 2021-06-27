@@ -55,6 +55,32 @@
         "custo": 123.44
       },
       "id": 3
+    },
+    {
+      "descricao": "testando agora",
+      "ativo": true,
+      "grupoId": [
+        4
+      ],
+      "estoque": 2,
+      "preco": {
+        "venda": 123.67,
+        "custo": 123.45
+      },
+      "id": 4
+    },
+    {
+      "descricao": "de novo um teste",
+      "ativo": null,
+      "grupoId": [
+        4
+      ],
+      "estoque": 123,
+      "preco": {
+        "venda": 123.34,
+        "custo": 123.45
+      },
+      "id": 5
     }
   ],
   "clientes": [
