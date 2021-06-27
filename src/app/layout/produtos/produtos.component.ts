@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { debounceTime } from 'rxjs/operators';
+import { ModalProdutosComponent } from './componentes/modal/modal-produtos/modal-produtos.component';
 import { Produto } from './models/produto.model';
 import { ProdutoService } from './services/produto.service';
 
@@ -60,25 +61,24 @@ export class ProdutosComponent implements OnInit {
       });
   }
 
-/*
-  public abrirModal(produtos: Produtos | undefined): void {
+  public abrirModal(produtos: Produto | undefined): void {
     // Instancia o modal
-    const modalRef = this.modalService.open(ProdutosModalComponent, { size: 'lg' });
+    const modalRef = this.modalService.open( ModalProdutosComponent, { size: 'lg' });
 
     // Passa o parâmetro do grupo de produtos para dentro
-    modalRef.componentInstance.grupoProdutos = grupoProdutos;
+    modalRef.componentInstance.grupoProdutos = produtos;
 
     // Pega a resposta quando o grupo de produtos salvar no modal
-    modalRef.componentInstance.onSave.subscribe((result: GrupoProdutos) => {
+    modalRef.componentInstance.onSave.subscribe((result: Produto) => {
       this.toastr.success('Grupo de produtos salvo com sucesso!');
 
-      if (!grupoProdutos?.id) {
+      if (!produtos?.id) {
         // Se não tiver id no grupoProdutos de entrada então é uma insert
-        this.grupoProdutos.push(result);
+        this.produtos.push(result);
       } else {
         // Remove o usuário anterior e insere o novo
-        const idx = this.grupoProdutos.findIndex(u => u.id === result!.id);
-        this.grupoProdutos.splice(idx, 1, result);
+        const idx = this.produtos.findIndex(u => u.id === result!.id);
+        this.produtos.splice(idx, 1, result);
       }
       this.limpaPesquisa();
     });
@@ -88,12 +88,12 @@ export class ProdutosComponent implements OnInit {
       this.toastr.success('Grupo de produtos excluído com sucesso!');
 
       // Acha o grupoProdutos no array inicial e remove ele
-      const idx = this.grupoProdutos.findIndex(u => u.id === grupoProdutos!.id);
-      this.grupoProdutos.splice(idx, 1);
+      const idx = this.produtos.findIndex(u => u.id === produtos!.id);
+      this.produtos.splice(idx, 1);
       this.limpaPesquisa();
     });
   }
-*/
+
   private limpaPesquisa(): void {
     this.searchControl?.setValue('');
   }
