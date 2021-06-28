@@ -53,7 +53,8 @@ export class ModalProdutosComponent implements OnInit {
         Validators.compose([Validators.required, Validators.minLength(5), Validators.maxLength(100)])
       ],
       ativo: [
-        produto.ativo
+        produto.ativo,
+        Validators.compose([Validators.required])
       ],
       grupoId: [
         produto.grupoId,

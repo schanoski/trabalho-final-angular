@@ -85,7 +85,7 @@ export class ProdutosComponent implements OnInit {
 
     // Pega a resposta quando o grupo de Produtos excluír no modal
     modalRef.componentInstance.onDelete.subscribe(() => {
-      this.toastr.success('Grupo de produtos excluído com sucesso!');
+      this.toastr.success('Lista de produtos excluído com sucesso!');
 
       // Acha o grupoProdutos no array inicial e remove ele
       const idx = this.produtos.findIndex(u => u.id === produtos!.id);

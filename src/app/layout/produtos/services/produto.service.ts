@@ -16,6 +16,27 @@ export class ProdutoService extends BaseRestService {
     return this.getter<Produto[]>('produtos').pipe(take(1));
   }
 
+  public buscarTodosQuery(filtros: any): Observable<Produto[]> {
+    // Verifica se tem os parâmetros e vai adicionando no array para jogar na URL
+    const query = new Array<string>();
+    if (filtros.id) {
+      query.push(`id=${filtros.id}`);
+    }
+    if (filtros.descricao) {
+      query.push(`descricao=${filtros.descricao}`);
+    }
+
+    const params = query.length > 0 ? '?' + query.join('&') : '';
+    return this.getter<Produto[]>(`produtos?${params}`).pipe(take(1));
+  }
+
+  public buscarTodosQuery2(filtros: any): Observable<Produto[]> {
+    const options = {
+      params: this.parseObjectToHttpParams(filtros)
+    };
+    return this.getter<Produto[]>('produtos', options).pipe(take(1));
+  }
+
   public buscarPorId(id: number): Observable<Produto> {
     return this.getter<Produto>(`produtos/${id}`).pipe(take(1));
   }
@@ -38,5 +59,8 @@ export class ProdutoService extends BaseRestService {
     return this.getter<GrupoProdutos[]>('grupoProdutos').pipe(take(1));
   }
 
+  public buscarPorGrupo(id: number): Observable<Produto[]>{
+    return this.getter<Produto[]>(`produtos?grupoId=${id}`).pipe(take(1));
+  }
 
 }

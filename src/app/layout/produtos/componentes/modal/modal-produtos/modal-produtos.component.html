@@ -33,13 +33,13 @@
     </div>
 
     <div class="row" formGroupName="preco" >
-      <!-- Preço de custo currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"  -->
+      <!-- Preço de custo  -->
       <div class="col-md-4 mt-1 form-group">
         <label class="form-control-label">Preço de Custo</label>
         <input type="text" class="form-control" formControlName="custo" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">
         <app-message-valid-control [control]="getControl('preco.custo')"> </app-message-valid-control>
       </div>
-
+      <!-- Preço de venda  -->
       <div class="col-md-4 mt-1 form-group">
         <label class="form-control-label">Preço de Venda</label>
         <input type="text" class="form-control" formControlName="venda" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">

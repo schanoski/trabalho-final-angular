@@ -1,3 +1,4 @@
+import { ProdutoService } from './../../../produtos/services/produto.service';
 import { GrupoProdutos } from './../../models/grupo-produtos.model';
 import { validateAllFormFields } from './../../../../shared/helpers/ui.helper';
 import { ToastrService } from 'ngx-toastr';
@@ -32,7 +33,8 @@ export class ModalComponent implements OnInit {
     private activeModal: NgbActiveModal,
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
-    private grupoProdutosService: GrupoProdutosService
+    private grupoProdutosService: GrupoProdutosService,
+    private produtosService: ProdutoService
   ) { }
 
   ngOnInit(): void {
@@ -74,17 +76,23 @@ export class ModalComponent implements OnInit {
 
   }
 
-  public excluir(): void {
-    this.grupoProdutosService.excluir(this.grupoProdutos!.id!).subscribe(() => {
-      // Emite o evento que excluiu
-      this.onDelete.emit();
+  public async excluir(): Promise<void> {
+    const filhos = await this.produtosService.buscarPorGrupo(this.grupoProdutos!.id!).toPromise();
+    if(filhos.length===0){
 
-      // Fecha o modal
-      this.activeModal.close();
-    }, error => {
-      this.toastr.error(error.message);
-    });
-  }
+      this.grupoProdutosService.excluir(this.grupoProdutos!.id!).subscribe(() => {
+        // Emite o evento que excluiu
+        this.onDelete.emit();
+  
+        // Fecha o modal
+        this.activeModal.close();
+      }, error => {
+        this.toastr.error(error.message);
+      });
+    }
+    else this.toastr.error("Existem produtos cadastrados nesse grupo")
+    }
+    
 
   get descricao() {
     return this.formGroup?.get('descricao');
