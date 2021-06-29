@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home-routing.module';
+import { ChartSchanoskiComponent } from './chart-schanoski/chart-schanoski.component';
 
 @NgModule({
   imports: [
@@ -11,7 +12,8 @@ import { HomeRoutingModule } from './home-routing.module';
     HomeRoutingModule
   ],
   declarations: [
-    HomeComponent
+    HomeComponent,
+    ChartSchanoskiComponent
   ],
   exports: [
 
