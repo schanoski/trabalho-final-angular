@@ -14,7 +14,7 @@ import { ProdutoService } from './services/produto.service';
 })
 export class ProdutosComponent implements OnInit {
 
-  produtos : Produto[] = [];
+  produtos: Produto[] = [];
   produtosSearch: Produto[] = [];
   searchControl: FormControl = new FormControl();
 
@@ -61,19 +61,19 @@ export class ProdutosComponent implements OnInit {
       });
   }
 
-  public abrirModal(produtos: Produto | undefined): void {
+  public abrirModal(produto: Produto | undefined): void {
     // Instancia o modal
     const modalRef = this.modalService.open( ModalProdutosComponent, { size: 'lg' });
 
-    // Passa o parâmetro do grupo de produtos para dentro
-    modalRef.componentInstance.grupoProdutos = produtos;
+    // Passa o parâmetro do produtos para dentro
+    modalRef.componentInstance.produto = produto;
 
     // Pega a resposta quando o grupo de produtos salvar no modal
     modalRef.componentInstance.onSave.subscribe((result: Produto) => {
-      this.toastr.success('Grupo de produtos salvo com sucesso!');
+      this.toastr.success('Produto salvo com sucesso!');
 
-      if (!produtos?.id) {
-        // Se não tiver id no grupoProdutos de entrada então é uma insert
+      if (!produto?.id) {
+        // Se não tiver id no produto de entrada então é uma insert
         this.produtos.push(result);
       } else {
         // Remove o usuário anterior e insere o novo
@@ -83,12 +83,12 @@ export class ProdutosComponent implements OnInit {
       this.limpaPesquisa();
     });
 
-    // Pega a resposta quando o grupo de Produtos excluír no modal
+    // Pega a resposta quando o Produto excluír no modal
     modalRef.componentInstance.onDelete.subscribe(() => {
-      this.toastr.success('Lista de produtos excluído com sucesso!');
+      this.toastr.success('Produto excluído com sucesso!');
 
-      // Acha o grupoProdutos no array inicial e remove ele
-      const idx = this.produtos.findIndex(u => u.id === produtos!.id);
+      // Acha o produtos no array inicial e remove ele
+      const idx = this.produtos.findIndex(u => u.id === produto!.id);
       this.produtos.splice(idx, 1);
       this.limpaPesquisa();
     });

@@ -76,6 +76,32 @@
         "custo": 123.45
       },
       "id": 5
+    },
+    {
+      "descricao": "teste editado",
+      "ativo": true,
+      "grupoId": [
+        2
+      ],
+      "estoque": 123,
+      "preco": {
+        "venda": 123.14,
+        "custo": 12.34
+      },
+      "id": 6
+    },
+    {
+      "descricao": "teste 008",
+      "ativo": true,
+      "grupoId": [
+        4
+      ],
+      "estoque": 345643,
+      "preco": {
+        "venda": 345653.46,
+        "custo": 345653.46
+      },
+      "id": 7
     }
   ],
   "clientes": [
@@ -85,6 +111,7 @@
       "dataNascimento": "2000-12-31",
       "endereco": {
         "logradouro": "minha rua",
+        "cep": "123456-789",
         "numero": 123,
         "bairro": "Centro",
         "cidade": {
@@ -96,7 +123,7 @@
       },
       "dateInsert": "2021-06-10T00:17:14.484Z",
       "id": 1,
-      "dateUpdate": "2021-06-12T20:52:10.368Z"
+      "dateUpdate": "2021-06-29T01:12:08.694Z"
     },
     {
       "nome": "William Schanoski 2",

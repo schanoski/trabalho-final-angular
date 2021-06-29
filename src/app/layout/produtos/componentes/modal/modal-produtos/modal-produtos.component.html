@@ -17,7 +17,7 @@
     <div class="col-md-4 mt-1 form-group">
       <label class="form-control-label">Ativo</label>
       <input type="checkbox" class="form-check-input" formControlName="ativo" ng-checked="produto.ativo = True">
-      <app-message-valid-control [control]="getControl('descricao')"> </app-message-valid-control>
+      <app-message-valid-control [control]="getControl('ativo')"> </app-message-valid-control>
     </div>
 
     <!-- Grupo Produtos -->
@@ -64,6 +64,7 @@
     <i class="fa fa-save mr-2"></i>
     Salvar
   </button>
+  
   <!-- Botão para excluír o usuário (só mostra se já tiver ID, senão não precisa excluir poir nem inseriu) -->
   <button class="btn btn-danger" (click)="excluir()" *ngIf="produto?.id">
     <i class="fa fa-delete mr-2"></i>

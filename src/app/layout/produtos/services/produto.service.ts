@@ -42,8 +42,7 @@ export class ProdutoService extends BaseRestService {
   }
 
   public salvar(produto: Produto): Observable<Produto> {
-    this.countSaved++;
-    // Verifica se o cliente já tem ID, se tiver chama o PUT para atual, senão o POST para inserir
+    // Verifica se o produto já tem ID, se tiver chama o PUT para atual, senão o POST para inserir
     if (produto.id) {
       return this.put<Produto>(`produtos/${produto.id}`, produto);
     } else {
@@ -52,7 +51,7 @@ export class ProdutoService extends BaseRestService {
   }
 
   public excluir(id: number): Observable<void> {
-    return this.delete(`clientes/${id}`).pipe(take(1));
+    return this.delete(`produtos/${id}`).pipe(take(1));
   }
 
   public buscarGrupoProdutos(): Observable<GrupoProdutos[]> {

@@ -48,7 +48,7 @@
       <!-- Número -->
       <div class="col-md-4 mt-1 form-group">
         <label class="form-control-label">Número</label>
-        <input type="text" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" class="form-control"
+        <input type="text" class="form-control"
           formControlName="numero">
         <app-message-valid-control [control]="getControl('endereco.numero')"> </app-message-valid-control>
       </div>
