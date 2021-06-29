@@ -25,13 +25,13 @@ export class ProdutosComponent implements OnInit {
   ) { 
 
 
-    // pega os valueChange do campo de pesquisa, ai toda vez que o usuário digitar no campo irá cair e nós filtramos o usuário pelo nome
+    // pega os valueChange do campo de pesquisa, ai toda vez que o usuário digitar no campo irá cair e nós filtramos o produto pelo nome
     // debounceTime(500) => cria um timeOut para entrar no subscribe apenas quando o usuário para de digitar após 0.5segundos
     this.searchControl.valueChanges
       .pipe(debounceTime(500))
       .subscribe(value => {
 
-        // Chama a função para filtrar os usuarios
+        // Chama a função para filtrar os produtos
         this.filtrarProdutos(value.toLocaleLowerCase());
 
       });
@@ -43,16 +43,16 @@ export class ProdutosComponent implements OnInit {
   }
 
   private carregaProdutosFromApi(): void {
-    // Chama o service de usuarios para buscar todos
-    //    .buscarTodos() retorna um Observable<Usuario[]>
+    // Chama o service de produtos para buscar todos
+    //    .buscarTodos() retorna um Observable<Produto[]>
     //    como a chamada é assincrona para capturar o resultado é preciso "se inscrever" para receber o retorno
 
     this.produtosService.buscarTodos()
       .subscribe(result => {
-        // pega o retorno recebido pela api e joga na nossa lista de usuários
+        // pega o retorno recebido pela api e joga na nossa lista de produto
         this.produtos = result;
 
-        // Chama a função para filtrar os usuários para trazer toda a lista
+        // Chama a função para filtrar os produtos para trazer toda a lista
         this.filtrarProdutos('');
 
       }, error => {
@@ -76,7 +76,7 @@ export class ProdutosComponent implements OnInit {
         // Se não tiver id no produto de entrada então é uma insert
         this.produtos.push(result);
       } else {
-        // Remove o usuário anterior e insere o novo
+        // Remove o produto anterior e insere o novo
         const idx = this.produtos.findIndex(u => u.id === result!.id);
         this.produtos.splice(idx, 1, result);
       }
@@ -99,7 +99,7 @@ export class ProdutosComponent implements OnInit {
   }
 
   private filtrarProdutos(value: string): void {
-    // Filtra os Grupos de Produtos e responde no array de usuários filtrados
+    // Filtra os Grupos de Produtos e responde no array de produtos filtrados
     this.produtosSearch = this.produtos.filter(u =>
       // coloca a descrição do grupo de produtos em minusculo para ignorar os maiusculos dos minusculos
       u.descricao.toLocaleLowerCase().includes(value)

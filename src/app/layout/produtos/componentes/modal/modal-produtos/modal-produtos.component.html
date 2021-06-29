@@ -14,9 +14,9 @@
 
 
     <!-- check de ativo -->
-    <div class="col-md-4 mt-1 form-group">
+    <div class="col-md-4 mt-1 custom-control custom-switch">
       <label class="form-control-label">Ativo</label>
-      <input type="checkbox" class="form-check-input" formControlName="ativo" ng-checked="produto.ativo = True">
+      <input type="checkbox" class="custom-control-input" formControlName="ativo" ng-checked="produto.ativo = True">
       <app-message-valid-control [control]="getControl('ativo')"> </app-message-valid-control>
     </div>
 
@@ -59,13 +59,13 @@
 </div>
 
 <div class="modal-footer">
-  <!-- Botão para salvar o usuário -->
+  <!-- Botão para salvar o produto -->
   <button class="btn btn-success" (click)="salvar()">
     <i class="fa fa-save mr-2"></i>
     Salvar
   </button>
   
-  <!-- Botão para excluír o usuário (só mostra se já tiver ID, senão não precisa excluir poir nem inseriu) -->
+  <!-- Botão para excluír o produto (só mostra se já tiver ID, senão não precisa excluir poir nem inseriu) -->
   <button class="btn btn-danger" (click)="excluir()" *ngIf="produto?.id">
     <i class="fa fa-delete mr-2"></i>
     Excluír

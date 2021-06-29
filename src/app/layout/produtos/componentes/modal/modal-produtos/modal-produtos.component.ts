@@ -1,4 +1,4 @@
-import { GrupoProdutos } from './../../../../grupo-produtos/models/grupo-produtos.model';
+import { Grupo } from './../../../../grupo-produtos/models/grupo-produtos.model';
 import { ProdutoService } from './../../../services/produto.service';
 import { Preco } from './../../../models/produto.model';
 import { GenericValidator } from './../../../../../shared/helpers/validator.helper';
@@ -28,7 +28,7 @@ export class ModalProdutosComponent implements OnInit {
   formGroup?: FormGroup;
 
   public preco: Preco[] = [];
-  public grupoProdutos: GrupoProdutos[] = [];
+  public grupoProdutos: Grupo[] = [];
 
   constructor(
     private activeModal: NgbActiveModal,
@@ -72,11 +72,11 @@ export class ModalProdutosComponent implements OnInit {
     return this.formBuilder.group({
       venda: [
         preco.venda,
-        Validators.compose([Validators.required, Validators.min(0), Validators.max(999999999)])
+        Validators.compose([Validators.required, Validators.min(0.01), Validators.max(999999999)])
       ],      
       custo: [
         preco.venda,
-        Validators.compose([Validators.required, Validators.min(0), Validators.max(999999999)])
+        Validators.compose([Validators.required, Validators.min(0.00), Validators.max(999999999)])
       ],
     });
   }
@@ -90,13 +90,13 @@ export class ModalProdutosComponent implements OnInit {
 
     // Pega as informações que estão no formGroup (que são os campos da tela)
     const produtoForm = this.formGroup?.getRawValue();
-    // Faz o merge dos objeto cliente inicial com os campos alterados na tela
+    // Faz o merge dos objeto produto inicial com os campos alterados na tela
     const produto = { ...this.produto, ...produtoForm };
 
     // Chama o service para salvar na API
     this.produtosService.salvar(produto)
       .subscribe(result => {
-        // Emite o evento que salvou com sucesso e passa o cliente que retornou do serviço atualizado
+        // Emite o evento que salvou com sucesso e passa o produto que retornou do serviço atualizado
         this.onSave.emit(result);
 
         // Fecha o modal

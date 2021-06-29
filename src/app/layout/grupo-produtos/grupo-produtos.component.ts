@@ -1,6 +1,6 @@
 import { ModalComponent } from './componentes/modal/modal.component';
 import { Component, OnInit } from '@angular/core';
-import { GrupoProdutos } from './models/grupo-produtos.model';
+import { Grupo } from './models/grupo-produtos.model';
 import { GrupoProdutosService } from './services/grupo-produtos.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
@@ -14,8 +14,8 @@ import { debounceTime } from 'rxjs/operators';
 })
 export class GrupoProdutosComponent implements OnInit {
 
-  grupoProdutos : GrupoProdutos[] = [];
-  grupoProdutosSearch: GrupoProdutos[] = [];
+  grupoProdutos : Grupo[] = [];
+  grupoProdutosSearch: Grupo[] = [];
   searchControl: FormControl = new FormControl();
 
   constructor(
@@ -25,13 +25,13 @@ export class GrupoProdutosComponent implements OnInit {
   ) { 
 
 
-    // pega os valueChange do campo de pesquisa, ai toda vez que o usuário digitar no campo irá cair e nós filtramos o usuário pelo nome
+    // pega os valueChange do campo de pesquisa, ai toda vez que o usuário digitar no campo irá cair e nós filtramos o grupo de produtos pela descrição
     // debounceTime(500) => cria um timeOut para entrar no subscribe apenas quando o usuário para de digitar após 0.5segundos
     this.searchControl.valueChanges
       .pipe(debounceTime(500))
       .subscribe(value => {
 
-        // Chama a função para filtrar os usuarios
+        // Chama a função para filtrar os grupos
         this.filtrarGrupoProdutos(value.toLocaleLowerCase());
 
       });
@@ -43,16 +43,16 @@ export class GrupoProdutosComponent implements OnInit {
   }
 
   private carregaGrupoProdutosFromApi(): void {
-    // Chama o service de usuarios para buscar todos
-    //    .buscarTodos() retorna um Observable<Usuario[]>
+    // Chama o service de grupo para buscar todos
+    //    .buscarTodos() retorna um Observable<grupoProdutos[]>
     //    como a chamada é assincrona para capturar o resultado é preciso "se inscrever" para receber o retorno
 
     this.grupoProdutosService.buscarTodos()
       .subscribe(result => {
-        // pega o retorno recebido pela api e joga na nossa lista de usuários
+        // pega o retorno recebido pela api e joga na nossa lista de grupo de Produtos
         this.grupoProdutos = result;
 
-        // Chama a função para filtrar os usuários para trazer toda a lista
+        // Chama a função para filtrar os grupos de produtos para trazer toda a lista
         this.filtrarGrupoProdutos('');
 
       }, error => {
@@ -62,7 +62,7 @@ export class GrupoProdutosComponent implements OnInit {
   }
 
 
-  public abrirModal(grupoProdutos: GrupoProdutos | undefined): void {
+  public abrirModal(grupoProdutos: Grupo | undefined): void {
     // Instancia o modal
     const modalRef = this.modalService.open(ModalComponent, { size: 'lg' });
 
@@ -70,21 +70,21 @@ export class GrupoProdutosComponent implements OnInit {
     modalRef.componentInstance.grupoProdutos = grupoProdutos;
 
     // Pega a resposta quando o grupo de produtos salvar no modal
-    modalRef.componentInstance.onSave.subscribe((result: GrupoProdutos) => {
+    modalRef.componentInstance.onSave.subscribe((result: Grupo) => {
       this.toastr.success('Grupo de produtos salvo com sucesso!');
 
       if (!grupoProdutos?.id) {
         // Se não tiver id no grupoProdutos de entrada então é uma insert
         this.grupoProdutos.push(result);
       } else {
-        // Remove o usuário anterior e insere o novo
+        // Remove o grupo de produto anterior e insere o novo
         const idx = this.grupoProdutos.findIndex(u => u.id === result!.id);
         this.grupoProdutos.splice(idx, 1, result);
       }
       this.limpaPesquisa();
     });
 
-    // Pega a resposta quando o grupo de Produtos excluír no modal
+    // Pega a resposta quando o grupo de Produtos excluir no modal
     modalRef.componentInstance.onDelete.subscribe(() => {
       this.toastr.success('Grupo de produtos excluído com sucesso!');
 

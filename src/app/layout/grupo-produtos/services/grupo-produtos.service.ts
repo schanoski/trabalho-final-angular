@@ -3,18 +3,18 @@ import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseRestService } from 'src/app/shared/services/base-rest.service';
-import { GrupoProdutos } from '../models/grupo-produtos.model';
+import { Grupo } from '../models/grupo-produtos.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GrupoProdutosService extends BaseRestService {
 
-  public buscarTodos(): Observable<GrupoProdutos[]> {
-    return this.getter<GrupoProdutos[]>('grupoProdutos').pipe(take(1));
+  public buscarTodos(): Observable<Grupo[]> {
+    return this.getter<Grupo[]>('grupoProdutos').pipe(take(1));
   }
 
-  public buscarTodosQuery(filtros: any): Observable<GrupoProdutos[]> {
+  public buscarTodosQuery(filtros: any): Observable<Grupo[]> {
     // Verifica se tem os parâmetros e vai adicionando no array para jogar na URL
     const query = new Array<string>();
     if (filtros.id) {
@@ -25,26 +25,26 @@ export class GrupoProdutosService extends BaseRestService {
     }
 
     const params = query.length > 0 ? '?' + query.join('&') : '';
-    return this.getter<GrupoProdutos[]>(`grupoProdutos?${params}`).pipe(take(1));
+    return this.getter<Grupo[]>(`grupoProdutos?${params}`).pipe(take(1));
   }
 
-  public buscarTodosQuery2(filtros: any): Observable<GrupoProdutos[]> {
+  public buscarTodosQuery2(filtros: any): Observable<Grupo[]> {
     const options = {
       params: this.parseObjectToHttpParams(filtros)
     };
-    return this.getter<GrupoProdutos[]>('grupoProdutos', options).pipe(take(1));
+    return this.getter<Grupo[]>('grupoProdutos', options).pipe(take(1));
   }
 
-  public buscarPorId(id: number): Observable<GrupoProdutos> {
-    return this.getter<GrupoProdutos>(`grupoProdutos/${id}`).pipe(take(1));
+  public buscarPorId(id: number): Observable<Grupo> {
+    return this.getter<Grupo>(`grupoProdutos/${id}`).pipe(take(1));
   }
 
-  public salvar(grupoProdutos: GrupoProdutos): Observable<GrupoProdutos> {
-    // Verifica se o usuário já tem ID, se tiver chama o PUT para atual, senão o POST para inserir
+  public salvar(grupoProdutos: Grupo): Observable<Grupo> {
+    // Verifica se o grupo de produtos já tem ID, se tiver chama o PUT para atual, senão o POST para inserir
     if (grupoProdutos.id) {
-      return this.put<GrupoProdutos>(`grupoProdutos/${grupoProdutos.id}`, grupoProdutos);
+      return this.put<Grupo>(`grupoProdutos/${grupoProdutos.id}`, grupoProdutos);
     } else {
-      return this.post<GrupoProdutos>('grupoProdutos', grupoProdutos);
+      return this.post<Grupo>('grupoProdutos', grupoProdutos);
     }
   }
 

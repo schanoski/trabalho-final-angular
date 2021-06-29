@@ -1,4 +1,4 @@
-import { GrupoProdutos } from './../../grupo-produtos/models/grupo-produtos.model';
+import { Grupo } from './../../grupo-produtos/models/grupo-produtos.model';
 import { Injectable } from '@angular/core';
 import { take } from 'rxjs/operators';
 import { HttpParams } from '@angular/common/http';
@@ -54,8 +54,8 @@ export class ProdutoService extends BaseRestService {
     return this.delete(`produtos/${id}`).pipe(take(1));
   }
 
-  public buscarGrupoProdutos(): Observable<GrupoProdutos[]> {
-    return this.getter<GrupoProdutos[]>('grupoProdutos').pipe(take(1));
+  public buscarGrupoProdutos(): Observable<Grupo[]> {
+    return this.getter<Grupo[]>('grupoProdutos').pipe(take(1));
   }
 
   public buscarPorGrupo(id: number): Observable<Produto[]>{

@@ -1,5 +1,5 @@
 import { ProdutoService } from './../../../produtos/services/produto.service';
-import { GrupoProdutos } from './../../models/grupo-produtos.model';
+import { Grupo } from './../../models/grupo-produtos.model';
 import { validateAllFormFields } from './../../../../shared/helpers/ui.helper';
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -15,15 +15,15 @@ import { hasErrors } from 'src/app/shared/helpers/ui.helper';
 })
 export class ModalComponent implements OnInit {
 
-  // Parâmetro para receber o usuário como entrada
+  // Parâmetro para receber o grupo como entrada
   @Input()
-  grupoProdutos: GrupoProdutos | undefined;
+  grupoProdutos: Grupo | undefined;
 
-  // Função para emitir de volta que o usuário for salvo (emite o novo usuário inserido/alterado)
+  // Função para emitir de volta que o grupo for salvo (emite o novo grupo inserido/alterado)
   @Output()
-  onSave: EventEmitter<GrupoProdutos> = new EventEmitter<GrupoProdutos>();
+  onSave: EventEmitter<Grupo> = new EventEmitter<Grupo>();
 
-  // Função para emitir de volta que o usuário for excluído
+  // Função para emitir de volta que o grupo for excluído
   @Output()
   onDelete: EventEmitter<void> = new EventEmitter<void>();
 
@@ -38,10 +38,10 @@ export class ModalComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.createForm(this.grupoProdutos || {} as GrupoProdutos);
+    this.createForm(this.grupoProdutos || {} as Grupo);
   }
 
-  createForm(grupoProdutos: GrupoProdutos) {
+  createForm(grupoProdutos: Grupo) {
     this.formGroup = this.formBuilder.group({
       descricao: [
         grupoProdutos.descricao,
@@ -59,13 +59,13 @@ export class ModalComponent implements OnInit {
 
     // Pega as informações que estão no formGroup (que são os campos da tela)
     const grupoProdutosForm = this.formGroup?.getRawValue();
-    // Faz o merge dos objeto usuário inicial com os campos alterados na tela
+    // Faz o merge dos objeto grupo inicial com os campos alterados na tela
     const grupoProdutos = { ...this.grupoProdutos, ...grupoProdutosForm };
 
     // Chama o service para salvar na API
     this.grupoProdutosService.salvar(grupoProdutos)
       .subscribe(result => {
-        // Emite o evento que salvou com sucesso e passa o usuário que retornou do serviço atualizado
+        // Emite o evento que salvou com sucesso e passa o grupo que retornou do serviço atualizado
         this.onSave.emit(result);
 
         // Fecha o modal
