@@ -8,7 +8,6 @@ export interface InfoChartViewModel {
 }
 
 export interface ProdutosPorGrupos {
-  mes: string;
+  descricao: string;
   quantidade: number;
-  valor: number;
 }
