@@ -23,9 +23,5 @@ export class CardComponent implements OnInit {
   ngOnInit() {
   }
 
-  atualizarDados(): void {
-    this.onRefresh.emit();
-  }
-
 }
 

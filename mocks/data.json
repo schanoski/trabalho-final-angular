@@ -13,6 +13,10 @@
     {
       "descricao": "Alimentos",
       "id": 3
+    },
+    {
+      "descricao": "Peças Agrícolas",
+      "id": 4
     }
   ],
   "produtos": [
