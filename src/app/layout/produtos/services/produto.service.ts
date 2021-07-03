@@ -1,7 +1,6 @@
 import { Grupo } from './../../grupo-produtos/models/grupo-produtos.model';
 import { Injectable } from '@angular/core';
 import { take } from 'rxjs/operators';
-import { HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { BaseRestService } from 'src/app/shared/services/base-rest.service';
 import { Produto } from '../models/produto.model';

@@ -12,6 +12,7 @@ import { InfoChartViewModel } from '../models/home.models';
 export class ChartSchanoskiComponent implements OnInit {
 
   public arrayProdutoGrupos: ProdutosPorGrupos[] = [];
+  toastr: any;
 
   constructor(
     private grupoProdutosService: GrupoProdutosService,
@@ -50,7 +51,7 @@ export class ChartSchanoskiComponent implements OnInit {
         this.produtosPorGrupos.labels = labels;
 
       } catch (error) {
-        // alert
+        this.toastr.error(error.message);
       } finally {
         this.produtosPorGrupos.loading = false;
       }
