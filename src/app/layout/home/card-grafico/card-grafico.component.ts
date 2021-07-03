@@ -30,4 +30,17 @@ export class CardGraficoComponent implements OnInit {
     this.onRefresh.emit();
   }
 
+  public chartOption = {
+    responsive: true,
+    scales:{
+      yAxes:[
+        {
+          ticks:{
+            beginAtZero: true
+          }
+        }
+      ]
+    }
+  }
+
 }

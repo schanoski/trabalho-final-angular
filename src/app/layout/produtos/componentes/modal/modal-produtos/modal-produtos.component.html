@@ -7,7 +7,7 @@
   <form [formGroup]="formGroup" *ngIf="formGroup">
     <!-- Campo de descricao -->
     <div class=" col-md-12 mt-1 form-group">
-      <label class="form-control-label">Descricao</label>
+      <label class="form-control-label">Descrição</label>
       <input type="text" class="form-control" formControlName="descricao">
       <app-message-valid-control [control]="getControl('descricao')"> </app-message-valid-control>
     </div>

@@ -93,6 +93,19 @@
         "custo": 8
       },
       "id": 11
+    },
+    {
+      "descricao": "Pneu de trator",
+      "ativo": true,
+      "grupoId": [
+        4
+      ],
+      "estoque": 4,
+      "preco": {
+        "venda": 1000,
+        "custo": 600
+      },
+      "id": 12
     }
   ],
   "clientes": [
